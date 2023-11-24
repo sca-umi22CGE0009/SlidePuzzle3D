@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class BlockMove : MonoBehaviour
 {
+    GameObject objAlpha;
+    bool isHit = false;
+    bool blockHit = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        objAlpha = GameObject.FindWithTag("Alpha");
     }
 
     // Update is called once per frame
     void Update()
     {
-        //ブロックがalphaだったら座標を入れ替える
+        GameObject clickObj;
+        
         if (Input.GetMouseButtonDown(0))
         {
             Ray mousePosition = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -21,10 +25,20 @@ public class BlockMove : MonoBehaviour
             {
                 if (hitInfo.collider.CompareTag("Block")||hitInfo.collider.CompareTag("Alpha"))
                 {
-                    Debug.Log("当たった");
+                    clickObj = hitInfo.collider.gameObject;
+                    //オブジェクト座標交換
+                    Vector3 pos = new Vector3(clickObj.transform.position.x, clickObj.transform.position.y, clickObj.transform.position.z);
+                    clickObj.transform.position = objAlpha.transform.position;
+                    objAlpha.transform.position = pos;
                 }
             }
         }
     }
-    
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Alpha"))
+        {
+            blockHit = true;
+        }
+    }
 }
