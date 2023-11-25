@@ -5,6 +5,8 @@ using UnityEngine;
 public class BlockMove : MonoBehaviour
 {
     GameObject objAlpha;
+    GameObject clickObj;
+
     bool isHit = false;
     bool blockHit = false;
     // Start is called before the first frame update
@@ -16,8 +18,6 @@ public class BlockMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject clickObj;
-        
         if (Input.GetMouseButtonDown(0))
         {
             Ray mousePosition = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -32,13 +32,6 @@ public class BlockMove : MonoBehaviour
                     objAlpha.transform.position = pos;
                 }
             }
-        }
-    }
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Alpha"))
-        {
-            blockHit = true;
         }
     }
 }
