@@ -414,7 +414,7 @@ Transform:
   m_GameObject: {fileID: 81114055}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0.09, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -568,7 +568,6 @@ GameObject:
   m_Component:
   - component: {fileID: 230758038}
   - component: {fileID: 230758039}
-  - component: {fileID: 230758040}
   m_Layer: 0
   m_Name: PuzzleBlocks
   m_TagString: Untagged
@@ -585,7 +584,7 @@ Transform:
   m_GameObject: {fileID: 230758037}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0.09, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -612,39 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ca41041a1aaad4283f532b1358e7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &230758040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 230758037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5b10eebb8e1c2144aae2e9525e1c490, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pos:
-  - {x: -2.5, y: 2.5}
-  - {x: 0, y: 2.5}
-  - {x: 2.5, y: 2.5}
-  - {x: -2.5, y: 0}
-  - {x: 0, y: 0}
-  - {x: 2.5, y: 0}
-  - {x: -2.5, y: -2.5}
-  - {x: 0, y: -2.5}
-  - {x: 2.5, y: -2.5}
-  images:
-  - {fileID: 51099865}
-  - {fileID: 1283001716}
-  - {fileID: 406939133}
-  - {fileID: 1334003482}
-  - {fileID: 1274059171}
-  - {fileID: 1439709062}
-  - {fileID: 1344337577}
-  - {fileID: 11569399}
-  - {fileID: 1865294357}
-  n: 9
+  length: 2.5
 --- !u!1 &379695204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,7 +1615,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1938,7 +1905,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -1966,7 +1933,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1167621533
 RectTransform:
@@ -3715,7 +3682,7 @@ Transform:
   m_GameObject: {fileID: 2119303318}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.3, y: 5.3, z: 0}
+  m_LocalPosition: {x: 6.3900003, y: 5.3, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
