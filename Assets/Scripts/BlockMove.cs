@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using UnityEngine;
 
@@ -10,7 +11,6 @@ public class BlockMove : MonoBehaviour
     //[SerializeField, Header("ç∂")] private GameObject left;
     [SerializeField,Header("RayÇÃí∑Ç≥")] private float length = 2.5f;
 
-    // Start is called before the first frame update
     void Start()
     {
         objAlpha = GameObject.FindWithTag("Alpha");
@@ -22,12 +22,13 @@ public class BlockMove : MonoBehaviour
         Vector3 pos = objAlpha.transform.position;
         Vector3 start = new Vector3(pos.x, pos.y, pos.z);
 
-        Vector3 aDir = new Vector3(-length, 0, 0);
-        Vector3 dDir = new Vector3(length, 0, 0);
+        Vector3 lDir = new Vector3(-length, 0, 0);
+        Vector3 rDir = new Vector3(length, 0, 0);
 
-        Ray rayLeft = new Ray(start, aDir);
-        Ray rayRight = new Ray(start, dDir);
+        Ray rayLeft = new Ray(start, lDir);
+        Ray rayRight = new Ray(start, rDir);
 
+        //É}ÉEÉXÇÃîªíË
         if (Input.GetMouseButtonDown(0))
         {
             Ray mousePosition = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -46,7 +47,9 @@ public class BlockMove : MonoBehaviour
                 }
             }
         }
+#if true
         Debug.DrawRay(rayLeft.origin, rayLeft.direction * length, UnityEngine.Color.green);
+#endif
     }
     void BlockJudge()
     {
@@ -57,15 +60,15 @@ public class BlockMove : MonoBehaviour
         Vector3 pos = objAlpha.transform.position;
         Vector3 start = new Vector3(pos.x, pos.y, pos.z);
         //rayÇÃï˚å¸
-        Vector3 aDir = new Vector3(length, 0, 0);
-        Vector3 dDir = new Vector3(-length, 0, 0);
-        Vector3 wDir = new Vector3(0, length, 0);
-        Vector3 sDir = new Vector3(0, -length, 0);
+        Vector3 lDir = new Vector3(length, 0, 0);
+        Vector3 rDir = new Vector3(-length, 0, 0);
+        Vector3 uDir = new Vector3(0, length, 0);
+        Vector3 dDir = new Vector3(0, -length, 0);
 
-        Ray Rayleft = new Ray(pos, aDir);
-        Ray d = new Ray(start, dDir);
-        //Ray w = new Ray(start, wDir);
-        //Ray s = new Ray(start, sDir);
+        Ray Rayleft = new Ray(pos, lDir);
+        Ray d = new Ray(start, rDir);
+        //Ray w = new Ray(start, uDir);
+        //Ray s = new Ray(start, dDir);
 
         if (Physics.Raycast(Rayleft, out RaycastHit leftHit))
         {
@@ -91,4 +94,5 @@ public class BlockMove : MonoBehaviour
         //{
         //}
     }
+
 }
