@@ -34,21 +34,15 @@ public class BlockMove : MonoBehaviour
             Ray mousePosition = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(mousePosition, out RaycastHit hitInfo))
             {
-                if (Physics.Raycast(rayLeft, out RaycastHit hitLeft))
-                {
-                    if (hitLeft.collider.CompareTag("Block"))
-                    {
-                        GameObject hit = hitLeft.collider.gameObject;
-                        //オブジェクト座標交換
-                        Vector3 leftPos = new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z);
-                        hit.transform.position = objAlpha.transform.position;
-                        objAlpha.transform.position = leftPos;
-                    }
-                }
+                        RayJudge();
             }
         }
 #if true
         Debug.DrawRay(rayLeft.origin, rayLeft.direction * length, UnityEngine.Color.green);
+        Debug.DrawRay(rayRight.origin, rayRight.direction * length, UnityEngine.Color.red);
+#else
+        Debug.DrawRay(rayLeft.origin, rayLeft.direction * length, UnityEngine.Color.blue);
+        Debug.DrawRay(rayLeft.origin, rayLeft.direction * length, UnityEngine.Color.yellow);
 #endif
     }
     void BlockJudge()
@@ -65,27 +59,34 @@ public class BlockMove : MonoBehaviour
         Vector3 uDir = new Vector3(0, length, 0);
         Vector3 dDir = new Vector3(0, -length, 0);
 
-        Ray Rayleft = new Ray(pos, lDir);
-        Ray d = new Ray(start, rDir);
-        //Ray w = new Ray(start, uDir);
-        //Ray s = new Ray(start, dDir);
+        Ray rayLeft = new Ray(pos, lDir);
+        Ray rayRight = new Ray(start, rDir);
+        //Ray rayUp = new Ray(start, uDir);
+        //Ray rayDown = new Ray(start, dDir);
 
-        if (Physics.Raycast(Rayleft, out RaycastHit leftHit))
+        if (Physics.Raycast(rayLeft, out RaycastHit hitL))
         {
-            GameObject leftObj = leftHit.collider.gameObject;
-            //オブジェクト座標交換
-            Vector3 leftPos = new Vector3(leftObj.transform.position.x, leftObj.transform.position.y, leftObj.transform.position.z);
-            leftObj.transform.position = objAlpha.transform.position;
-            objAlpha.transform.position = leftPos;
+            if (hitL.collider.CompareTag("Block"))
+            {
+                GameObject objL = hitL.collider.gameObject;
+                //オブジェクト座標交換
+                Vector3 PosL = new Vector3(objL.transform.position.x, objL.transform.position.y, objL.transform.position.z);
+                objL.transform.position = objAlpha.transform.position;
+                objAlpha.transform.position = PosL;
+            }
         }
-        //if (Physics.Raycast(d, out RaycastHit dhitInfo))
-        //{
-        //    GameObject dObj = dhitInfo.collider.gameObject;
-        //    //オブジェクト座標交換
-        //    Vector3 dPos = new Vector3(dObj.transform.position.x, dObj.transform.position.y, dObj.transform.position.z);
-        //    dObj.transform.position = objAlpha.transform.position;
-        //    objAlpha.transform.position = dPos;
-        //}
+
+        if (Physics.Raycast(rayRight, out RaycastHit hitR))
+        {
+            if (hitR.collider.CompareTag("Block"))
+            {
+                GameObject objR = hitR.collider.gameObject;
+                //オブジェクト座標交換
+                Vector3 posR = new Vector3(objR.transform.position.x, objR.transform.position.y, objR.transform.position.z);
+                objR.transform.position = objAlpha.transform.position;
+                objAlpha.transform.position = posR;
+            }
+        }
         //if (Physics.Raycast(w, out RaycastHit whitInfo))
         //{
 
