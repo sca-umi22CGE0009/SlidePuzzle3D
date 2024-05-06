@@ -12,7 +12,6 @@ public class BlockMove : MonoBehaviour
     GameObject objAlpha;
     GameObject objClick;
 
-    //[SerializeField, Header("左")] private GameObject left;
     [SerializeField,Header("Rayの長さ")] private float length = 2.5f;
 
     void Start()
@@ -20,7 +19,6 @@ public class BlockMove : MonoBehaviour
         objAlpha = GameObject.FindWithTag("Alpha");
     }
 
-    // Update is called once per frame
     void Update()
     {
         //マウスの判定
@@ -38,6 +36,7 @@ public class BlockMove : MonoBehaviour
             }
         }
     }
+    //rayを４方向に伸ばしている
     void RayJudge()
     {
         //rayの方向
@@ -51,7 +50,7 @@ public class BlockMove : MonoBehaviour
         placeChanger(uDir);
         placeChanger(dDir);
     }
-
+    //透明ブロックに当たっているかどうかの判定
     void placeChanger(Vector3 dir)
     {
         Vector3 pos = objClick.transform.position;
